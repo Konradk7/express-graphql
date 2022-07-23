@@ -1,8 +1,16 @@
 import http from "http";
 
 const server = http.createServer((req, res) => {
-    console.log(req);
-    res.end("Witaj, świecie!");
+    if(req.url === "/") {
+        res.end("Witaj, świecie!");
+    } else if (req.url === "/a") {
+        res.end("Witaj na trasie A!");
+    } else if (req.url === "/b") {
+        res.end("Witaj na trasie B!");
+    } else {
+        res.end("Do zobaczenia!");
+    }
+
 });
 const port = 8000;
 server.listen(port, () => {

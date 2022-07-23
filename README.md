@@ -1,1 +1,1 @@
-# express-graphql
+# express node and graphql exercises
