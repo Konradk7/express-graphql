@@ -2,6 +2,7 @@ import express from "express";
 
 const app = express();
 
-app.listen({port: 8000}, () => {
+app.use((req, res, next) => {
     console.log("Server node express został uruchomiony!")
+    next();
 })
