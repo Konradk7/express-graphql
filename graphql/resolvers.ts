@@ -1,6 +1,7 @@
 import { IResolvers} from "@graphql-tools/utils";
 import { v4 } from "uuid";
 import {ExecutionContext} from "graphql/execution/execute";
+import {GqlContext} from "./GqlContext";
 
 
 interface User {
@@ -21,7 +22,7 @@ const resolvers: IResolvers = {
             args: {
                 id: string;
             },
-            ctx: ExecutionContext,
+            ctx: GqlContext,
             info: any
         ): Promise<User> => {
             return {
@@ -32,7 +33,7 @@ const resolvers: IResolvers = {
         getTodos: async (
             parent: any,
             args: null,
-            ctx: ExecutionContext,
+            ctx: GqlContext,
             info: any
         ): Promise<Array<Todo>> => {
             return  [
