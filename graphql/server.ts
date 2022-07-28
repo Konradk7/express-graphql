@@ -12,4 +12,7 @@ const apolloServer = new ApolloServer({
     context: ({ req, res}: any) => ({ req, res}),
 });
 apolloServer.applyMiddleware({ app, cors: false });
+app.listen({ port: 8000}, () => {
+    console.log("Serwer GraphQL został uruchomiony!")
+})
 
