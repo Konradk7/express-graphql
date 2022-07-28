@@ -16,3 +16,4 @@ type User {
       getTodos: [Todo!]
   }
 `;
+export default typeDefs;
