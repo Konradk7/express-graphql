@@ -29,7 +29,30 @@ const resolvers: IResolvers = {
                 username: "Dawid",
             };
         },
-    }
-}
+        getTodos: async (
+            parent: any,
+            args: null,
+            ctx: ExecutionContext,
+            info: any
+        ): Promise<Array<Todo>> => {
+            return  [
+                {
+                    id: v4(),
+                    title: "Zadanie pierwsze",
+                    description: "Opis pierwszego zadania",
+                },
+                {
+                    id: v4(),
+                    title: "Zadanie drugie",
+                    description: "Opis drugiego zadania",
+                },
+                {
+                    id: v4(),
+                    title: "Zadanie trzecie",
+                },
+            ];
+        },
+    },
+};
 
 export default resolvers;
