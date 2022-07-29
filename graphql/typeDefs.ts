@@ -17,7 +17,10 @@ type User {
       getTodos: [Todo!]
   }
   type Mutation {
-  addTodo(title: String!, description: String): Todo}
+      addTodo(title: String!, description: String): Todo
+  }
+  type Subscription {
+      newTodo: Todo!    
 `;
 
 export default typeDefs;

@@ -15,6 +15,7 @@ interface Todo {
     title: string;
     description?: string;
 }
+const NEW_TODO = "NEW TODO"
 const resolvers: IResolvers = {
     Query: {
         getUser: async (
@@ -61,15 +62,24 @@ const resolvers: IResolvers = {
                 title: string;
                 description: string;
             },
-            ctx: GqlContext,
+            {pubsub}: GqlContext,
             info: any
         ): Promise<Todo> => {
-            todos.push({
+            const newTodo = {
                 id: v4(),
                 title: args.title,
                 description: args.description
-            });
-            return todos[todos.length -1];
+            }
+            todos.push(newTodo);
+            pubsub.publish(NEW_TODO, { newTodo});
+            return todos[todos.length - 1];
+        },
+    },
+    Subscription: {
+        newTodo: {
+            subscribe: (parent, args: null, {pubsub}: GqlContext) => {
+                pubsub.asyncIterator(NEW_TODO)
+            }
         },
     },
 };
