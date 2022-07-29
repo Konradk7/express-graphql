@@ -16,6 +16,8 @@ type User {
       getUser(id: ID): User
       getTodos: [Todo!]
   }
+  type Mutation {
+  addTodo(title: String!, description: String): Todo}
 `;
 
 export default typeDefs;
